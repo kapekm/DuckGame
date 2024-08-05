@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 20.0
-const JUMP_VELOCITY = -50.0
+const SPEED = 40.0
+const JUMP_VELOCITY = -150.0
 const gravity = 300
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
