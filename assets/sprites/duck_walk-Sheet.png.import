@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0ypte1b8qaku"
-path="res://.godot/imported/walk.JPG-280697e7a84dfe8611ce7fe349524f24.ctex"
+uid="uid://q5ka1shwk3w3"
+path="res://.godot/imported/duck_walk-Sheet.png-435384cf5883d486edb7f49baf4376bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/walk.JPG"
-dest_files=["res://.godot/imported/walk.JPG-280697e7a84dfe8611ce7fe349524f24.ctex"]
+source_file="res://assets/sprites/duck_walk-Sheet.png"
+dest_files=["res://.godot/imported/duck_walk-Sheet.png-435384cf5883d486edb7f49baf4376bb.ctex"]
 
 [params]
 
