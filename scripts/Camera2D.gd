@@ -11,7 +11,7 @@ func _process(delta):
 		global_position.x -= 64
 
 		## Check if the player is outside the bounds on the y-axis
-	#if position.y > (global_position.y + 32):
-		#global_position.y += 64
-	#elif position.y < (global_position.y - 32):
-		#global_position.y -= 64
+	if position.y > (global_position.y + 32):
+		global_position.y += 64
+	elif position.y < (global_position.y - 32):
+		global_position.y -= 64
