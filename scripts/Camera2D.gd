@@ -6,7 +6,6 @@ func _process(delta):
 	var position = player.global_position
 	if position.x > (global_position.x + 32):
 		global_position.x += 64
-		print(global_position.x)
 	elif position.x < (global_position.x - 32):
 		global_position.x -= 64
 

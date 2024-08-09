@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://day3yc64qgjnj"]
+
+[sub_resource type="Gradient" id="Gradient_p2d6d"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.687366)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o0joh"]
+gradient = SubResource("Gradient_p2d6d")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Animation" id="Animation_omrcb"]
+resource_name = "fade_out"
+
+[sub_resource type="Animation" id="Animation_sl54t"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_03ond"]
+_data = {
+"RESET": SubResource("Animation_sl54t"),
+"fade_out": SubResource("Animation_omrcb")
+}
+
+[node name="Transitions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+pivot_offset = Vector2(32, 32)
+texture = SubResource("GradientTexture2D_o0joh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_03ond")
+}
