@@ -147,3 +147,7 @@ animation = &"walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, 2.5)
 shape = SubResource("RectangleShape2D_wapc2")
+
+[node name="Wall_collider" type="RayCast2D" parent="."]
+position = Vector2(4, 2)
+target_position = Vector2(8, 2.08165e-12)
