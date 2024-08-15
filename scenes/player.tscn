@@ -1,8 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://bhx8ddl5jk32k"]
+[gd_scene load_steps=34 format=3 uid="uid://bhx8ddl5jk32k"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rlv6r"]
 [ext_resource type="Texture2D" uid="uid://brrjh45g1gli4" path="res://assets/sprites/duck_idle-Sheet.png" id="2_kokaw"]
+[ext_resource type="Texture2D" uid="uid://bi2kwgue0qwdw" path="res://assets/sprites/jump-Sheet.png" id="3_kue2i"]
 [ext_resource type="Texture2D" uid="uid://q5ka1shwk3w3" path="res://assets/sprites/duck_walk-Sheet.png" id="4_vymjg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol2js"]
+atlas = ExtResource("3_kue2i")
+region = Rect2(60, 0, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lyoe2"]
 atlas = ExtResource("2_kokaw")
@@ -19,6 +24,46 @@ region = Rect2(30, 0, 15, 15)
 [sub_resource type="AtlasTexture" id="AtlasTexture_oo6tl"]
 atlas = ExtResource("2_kokaw")
 region = Rect2(45, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68sty"]
+atlas = ExtResource("3_kue2i")
+region = Rect2(15, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fndg3"]
+atlas = ExtResource("3_kue2i")
+region = Rect2(30, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3k10b"]
+atlas = ExtResource("3_kue2i")
+region = Rect2(45, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eca4m"]
+atlas = ExtResource("3_kue2i")
+region = Rect2(60, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13n26"]
+atlas = ExtResource("3_kue2i")
+region = Rect2(75, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk6vx"]
+atlas = ExtResource("3_kue2i")
+region = Rect2(60, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dohc"]
+atlas = ExtResource("3_kue2i")
+region = Rect2(45, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxvsh"]
+atlas = ExtResource("3_kue2i")
+region = Rect2(30, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30kor"]
+atlas = ExtResource("3_kue2i")
+region = Rect2(15, 0, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaae6"]
+atlas = ExtResource("3_kue2i")
+region = Rect2(0, 0, 15, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j3l1y"]
 atlas = ExtResource("4_vymjg")
@@ -72,6 +117,14 @@ region = Rect2(165, 0, 15, 15)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ol2js")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_lyoe2")
 }, {
 "duration": 1.0,
@@ -87,10 +140,45 @@ animations = [{
 "name": &"idle",
 "speed": 10.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"jump",
-"speed": 5.0
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68sty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fndg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3k10b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eca4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13n26")
+}],
+"loop": false,
+"name": &"jump_up",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk6vx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dohc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxvsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30kor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaae6")
+}],
+"loop": false,
+"name": &"land",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -142,12 +230,12 @@ script = ExtResource("1_rlv6r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0vbkc")
-animation = &"walk"
+animation = &"jump_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, 2.5)
 shape = SubResource("RectangleShape2D_wapc2")
 
-[node name="Wall_collider" type="RayCast2D" parent="."]
+[node name="wall_ray" type="RayCast2D" parent="."]
 position = Vector2(4, 2)
-target_position = Vector2(8, 2.08165e-12)
+target_position = Vector2(4, 2.08165e-12)

@@ -5,13 +5,14 @@ const JUMP_VELOCITY = -100.0
 const WALL_JUMP_VELOCITY_X = 100
 const ACCEL = 300
 const DECCEL = 300
-const GRAVITY = 300
+const GRAVITY = 400
 
 var jump_count = 0
 var max_jump = 2
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var collision_shape_2d = $CollisionShape2D
+@onready var wall_ray = $wall_ray
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -25,29 +26,30 @@ func _physics_process(delta):
 		if direction < 0:
 			animated_sprite_2d.offset.x = 7
 			animated_sprite_2d.flip_h = true
+			wall_ray.scale.x = -1
 			
 		elif direction > 0:
 			animated_sprite_2d.offset.x = 0
 			animated_sprite_2d.flip_h = false
+			wall_ray.scale.x = 1
 			
 	else:
 		velocity.x = move_toward(velocity.x, 0, DECCEL * delta)
 	
 	if is_on_floor():
 		jump_count = 0
-		
 		if direction == 0:
 			animated_sprite_2d.play("idle")
 		elif direction != 0:
 			animated_sprite_2d.play("walk")
 	else: #they are jumping
-		animated_sprite_2d.play("walk")
+		animated_sprite_2d.play("fall")
 	
 	# Add the gravity.
-	if !is_on_wall():
+	if !wall_ray.is_colliding():
 		velocity.y += GRAVITY * delta
-	elif is_on_wall():
-		velocity.y += GRAVITY * 0.1 * delta
+	elif wall_ray.is_colliding():
+		velocity.y += 0.3
 	
 	if is_on_wall() and Input.is_action_just_pressed("jump"):
 		print(velocity.x)
